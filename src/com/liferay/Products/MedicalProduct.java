@@ -1,4 +1,4 @@
-package com.liferay.Products;
+package com.liferay.products;
 
 public class MedicalProduct extends Product {
 

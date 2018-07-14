@@ -1,10 +1,8 @@
-package com.liferay.Products;
+package com.liferay.products;
 
 public class ProductFactory {
 
-    public ProductFactory() { }
-
-    public Product getProduct(ProductType type) {
+    public static Product createProduct(ProductType type) {
         Product product = null;
 
         if (type == ProductType.BOOK)

@@ -1,6 +1,6 @@
-package com.liferay.Shopping;
+package com.liferay.shopping;
 
-import com.liferay.Products.Product;
+import com.liferay.products.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +18,13 @@ public class ShoppingCart {
 
     public void addProducts(List<Product> products) {
         this.products.addAll(products);
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void clearCart() {
+        products.clear();
     }
 }

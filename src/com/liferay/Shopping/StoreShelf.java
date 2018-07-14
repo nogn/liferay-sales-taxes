@@ -1,19 +1,17 @@
-package com.liferay.Shopping;
+package com.liferay.shopping;
 
-import com.liferay.Products.Product;
-import com.liferay.Products.ProductFactory;
-import com.liferay.Products.ProductType;
+import com.liferay.products.Product;
+import com.liferay.products.ProductFactory;
+import com.liferay.products.ProductType;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class StoreShelf {
 
-    private ProductFactory factory;
     private final Map<String, ProductType> shelfProducts;
 
     public StoreShelf() {
-        factory = new ProductFactory();
         this.shelfProducts = new HashMap<String, ProductType>();
         this.registerAvailableProducts();
     }
@@ -27,18 +25,9 @@ public class StoreShelf {
         this.shelfProducts.put("bottle of perfume", ProductType.MISCELLANEOUS);
     }
 
-    public StoreShelf(Map<String, ProductType> shelfProducts) {
-        this.shelfProducts = shelfProducts;
-    }
-
-    public Product getProduct(String name, double value, int quantity, boolean imported) {
+    public Product getProduct(String name) {
         ProductType type = this.shelfProducts.get(name);
-
-        Product product = this.factory.getProduct(type);
-        product.setName(name);
-        product.setValue(value);
-        product.setQuantity(quantity);
-        product.setImported(imported);
+        Product product = ProductFactory.createProduct(type);
 
         return product;
     }

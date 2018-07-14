@@ -1,4 +1,4 @@
-package com.liferay.Products;
+package com.liferay.products;
 
 public class MiscellaneousProduct extends Product {
 
@@ -12,6 +12,6 @@ public class MiscellaneousProduct extends Product {
 
     @Override
     public double getTaxRate() {
-        return 10;
+        return 0.1;
     }
 }
