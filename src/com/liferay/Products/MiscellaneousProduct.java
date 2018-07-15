@@ -1,5 +1,7 @@
 package com.liferay.products;
 
+import static com.liferay.billing.TaxType.BASIC_TAX;
+
 public class MiscellaneousProduct extends Product {
 
     public MiscellaneousProduct() {
@@ -12,6 +14,6 @@ public class MiscellaneousProduct extends Product {
 
     @Override
     public double getTaxRate() {
-        return 0.1;
+        return BASIC_TAX;
     }
 }

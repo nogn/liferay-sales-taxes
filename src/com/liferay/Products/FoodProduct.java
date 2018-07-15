@@ -1,5 +1,7 @@
 package com.liferay.products;
 
+import static com.liferay.billing.TaxType.EXEMPT_TAX;
+
 public class FoodProduct extends Product {
     public FoodProduct() {
         super();
@@ -11,6 +13,6 @@ public class FoodProduct extends Product {
 
     @Override
     public double getTaxRate() {
-        return 0;
+        return EXEMPT_TAX;
     }
 }
