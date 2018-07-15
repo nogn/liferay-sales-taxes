@@ -51,18 +51,18 @@ public abstract class Product {
     }
 
     public double getPrice() {
-        return this.getQuantity() * this.getValue();
+        return getQuantity() * getValue();
     }
 
     public double getTaxedPrice() {
-        return this.getPrice() + this.taxValue;
+        return getPrice() + taxValue;
     }
 
     public abstract double getTaxRate();
 
     @Override
     public String toString() {
-        String formattedTaxedPrice = String.format("%.2f", this.getTaxedPrice());
-        return this.getQuantity() + (this.isImported() ? " imported " : " ") + this.getName() + ": " + formattedTaxedPrice;
+        String formattedTaxedPrice = String.format("%.2f", getTaxedPrice());
+        return getQuantity() + (isImported() ? " imported " : " ") + getName() + ": " + formattedTaxedPrice;
     }
 }

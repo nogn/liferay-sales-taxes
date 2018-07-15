@@ -8,7 +8,7 @@ public class PaymentCounter {
     TaxCalculator taxCalculator;
 
     public PaymentCounter() {
-        this.taxCalculator = new TaxCalculator();
+        taxCalculator = new TaxCalculator();
     }
 
     public Receipt createReceipt(List<Product> products) {
@@ -16,7 +16,7 @@ public class PaymentCounter {
         double totalSalesTax = 0;
 
         for (Product product : products) {
-            double taxValue = this.taxCalculator.calculateAndGetTaxValue(product);
+            double taxValue = taxCalculator.calculateTaxValue(product);
             product.setTaxValue(taxValue);
 
             totalCost += product.getTaxedPrice();

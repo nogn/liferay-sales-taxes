@@ -31,16 +31,16 @@ public class Receipt {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Product product: this.products){
+        for (Product product: products){
             sb.append(product);
             sb.append("\n");
         }
 
         sb.append("Sales Taxes: ");
-        sb.append(formatValue(this.totalSalesTax));
+        sb.append(formatValue(totalSalesTax));
         sb.append("\n");
         sb.append("Total: ");
-        sb.append(formatValue(this.total));
+        sb.append(formatValue(total));
         sb.append("\n");
 
         return sb.toString();

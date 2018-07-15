@@ -2,7 +2,6 @@ package com.liferay;
 
 import com.liferay.shopping.ShoppingStore;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,10 +10,10 @@ public class Main {
     public static void main(String[] args) {
         ShoppingStore shoppingStore = ShoppingStore.getInstance();
 
-        List<String> fileNames = Arrays.asList("input-files/input1.txt", "input-files/input2.txt", "input-files/input3.txt");
+        List<String> filePaths = Arrays.asList("input-files/input1.txt", "input-files/input2.txt", "input-files/input3.txt");
 
-        for (String fileName: fileNames){
-            shoppingStore.getSalesOrderAndCheckout(fileName);
+        for (String filePath: filePaths){
+            shoppingStore.processSalesOrderAndCreateReceipt(filePath);
         }
     }
 }

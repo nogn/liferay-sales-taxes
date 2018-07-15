@@ -14,22 +14,23 @@ public class FileOrderReader extends OrderReader {
         super();
     }
 
-    public List<Product> getOrderList(String path) {
+    public List<Product> getOrderList(String filePath) {
         List<Product> products = new ArrayList<Product>();
 
-        try(Scanner scanner = new Scanner(new FileReader(path)))
+        try(Scanner scanner = new Scanner(new FileReader(filePath)))
         {
             while(scanner.hasNext()) {
-                readNewProduct(scanner, products);
+                Product newProduct = readNewProduct(scanner);
+                products.add(newProduct);
             }
         } catch (FileNotFoundException e){
-            System.out.println("The given file " + path + " was not found.");
+            System.out.println("The given file " + filePath + " was not found.");
         }
 
         return products;
     }
 
-    private void readNewProduct(Scanner scanner, List<Product> products) {
+    private Product readNewProduct(Scanner scanner) {
         int quantity = scanner.nextInt();
 
         String[] descValue = scanner.nextLine().split(" at ");
@@ -39,18 +40,6 @@ public class FileOrderReader extends OrderReader {
         boolean imported = description.contains("imported");
         String name = imported ? description.substring(9) : description;
 
-        Product product = buildNewProduct(name, value, quantity, imported);
-        products.add(product);
-    }
-
-    private Product buildNewProduct(String name, double value, int quantity, boolean imported) {
-        Product product = this.storeShelf.getProduct(name);
-
-        product.setName(name);
-        product.setValue(value);
-        product.setQuantity(quantity);
-        product.setImported(imported);
-
-        return product;
+        return storeShelf.getProduct(name, value, quantity, imported);
     }
 }

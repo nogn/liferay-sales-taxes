@@ -8,7 +8,7 @@ public abstract class OrderReader {
     StoreShelf storeShelf;
 
     public OrderReader() {
-        this.storeShelf = new StoreShelf();
+        storeShelf = new StoreShelf();
     }
 
     abstract List<Product> getOrderList(String path);

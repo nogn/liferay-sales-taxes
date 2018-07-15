@@ -12,22 +12,22 @@ public class StoreShelf {
     private final Map<String, ProductType> shelfProducts;
 
     public StoreShelf() {
-        this.shelfProducts = new HashMap<String, ProductType>();
-        this.registerAvailableProducts();
+        shelfProducts = new HashMap<String, ProductType>();
+        registerAvailableProducts();
     }
 
     private void registerAvailableProducts() {
-        this.shelfProducts.put("book", ProductType.BOOK);
-        this.shelfProducts.put("chocolate bar", ProductType.FOOD);
-        this.shelfProducts.put("box of chocolates", ProductType.FOOD);
-        this.shelfProducts.put("packet of headache pills", ProductType.MEDICAL);
-        this.shelfProducts.put("music CD", ProductType.MISCELLANEOUS);
-        this.shelfProducts.put("bottle of perfume", ProductType.MISCELLANEOUS);
+        shelfProducts.put("book", ProductType.BOOK);
+        shelfProducts.put("chocolate bar", ProductType.FOOD);
+        shelfProducts.put("box of chocolates", ProductType.FOOD);
+        shelfProducts.put("packet of headache pills", ProductType.MEDICAL);
+        shelfProducts.put("music CD", ProductType.MISCELLANEOUS);
+        shelfProducts.put("bottle of perfume", ProductType.MISCELLANEOUS);
     }
 
-    public Product getProduct(String name) {
-        ProductType type = this.shelfProducts.get(name);
-        Product product = ProductFactory.createProduct(type);
+    public Product getProduct(String name, double value, int quantity, boolean imported) {
+        ProductType type = shelfProducts.get(name);
+        Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
 
         return product;
     }

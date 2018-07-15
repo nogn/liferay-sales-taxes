@@ -7,7 +7,7 @@ import static com.liferay.billing.TaxType.IMPORT_TAX;
 public class TaxCalculator {
     private static final double ROUND_OFF = 0.05;
 
-    public double calculateAndGetTaxValue(Product product) {
+    public double calculateTaxValue(Product product) {
         double taxValue = product.getTaxRate() * product.getPrice();
 
         if (product.isImported())
