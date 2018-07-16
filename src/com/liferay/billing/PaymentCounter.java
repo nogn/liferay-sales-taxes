@@ -4,11 +4,11 @@ import com.liferay.products.Product;
 
 import java.util.List;
 
-public class PaymentCounter {
-    TaxCalculator taxCalculator;
+public class PaymentCounter implements IPaymentCounter {
+    private ITaxCalculator taxCalculator;
 
     public PaymentCounter() {
-        taxCalculator = new TaxCalculator();
+        this.taxCalculator = new TaxCalculator();
     }
 
     public Receipt createReceipt(List<Product> products) {

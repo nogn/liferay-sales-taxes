@@ -7,7 +7,7 @@ import com.liferay.products.ProductType;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreShelf {
+public class StoreShelf implements IStoreShelf {
 
     private final Map<String, ProductType> shelfProducts;
 
@@ -25,10 +25,20 @@ public class StoreShelf {
         shelfProducts.put("bottle of perfume", ProductType.MISCELLANEOUS);
     }
 
-    public Product getProduct(String name, double value, int quantity, boolean imported) {
-        ProductType type = shelfProducts.get(name);
-        Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
+    public Product getProduct(String name, double value, int quantity, boolean imported) throws ProductNotAvailableException {
+        if (isProductAvailable(name)) {
+            ProductType type = getProductType(name);
+            return ProductFactory.createProduct(type, name, value, quantity, imported);
+        } else {
+            throw new ProductNotAvailableException("Product '" + name + "' is not available.");
+        }
+    }
 
-        return product;
+    private boolean isProductAvailable(String name) {
+        return shelfProducts.containsKey(name);
+    }
+    
+    private ProductType getProductType(String name) {
+    	return shelfProducts.get(name);
     }
 }

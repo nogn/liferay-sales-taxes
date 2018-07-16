@@ -1,5 +1,7 @@
 package com.liferay.products;
 
+import java.util.Locale;
+
 public abstract class Product {
     private String name;
     private double value;
@@ -62,7 +64,21 @@ public abstract class Product {
 
     @Override
     public String toString() {
-        String formattedTaxedPrice = String.format("%.2f", getTaxedPrice());
+        String formattedTaxedPrice = String.format(Locale.US, "%.2f", getTaxedPrice());
         return getQuantity() + (isImported() ? " imported " : " ") + getName() + ": " + formattedTaxedPrice;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Product))
+            return false;
+
+        Product product = (Product) obj;
+
+        return product.getValue() == this.getValue()
+            && product.getName().equals(this.getName())
+            && product.getQuantity() == this.getQuantity()
+            && product.isImported() == this.isImported()
+            && product.getTaxValue() == this.getTaxValue();
     }
 }

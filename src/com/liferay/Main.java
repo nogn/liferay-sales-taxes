@@ -1,9 +1,9 @@
 package com.liferay;
 
-import com.liferay.shopping.ShoppingStore;
-
 import java.util.Arrays;
 import java.util.List;
+
+import com.liferay.shopping.ShoppingStore;
 
 public class Main {
 
@@ -11,9 +11,9 @@ public class Main {
         ShoppingStore shoppingStore = ShoppingStore.getInstance();
 
         List<String> filePaths = Arrays.asList("input-files/input1.txt", "input-files/input2.txt", "input-files/input3.txt");
-
-        for (String filePath: filePaths){
-            shoppingStore.processSalesOrderAndCreateReceipt(filePath);
+        
+        for (String filePath: filePaths) {
+            shoppingStore.processOrderAndCreateReceipt(filePath);
         }
     }
 }

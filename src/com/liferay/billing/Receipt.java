@@ -3,6 +3,7 @@ package com.liferay.billing;
 import com.liferay.products.Product;
 
 import java.util.List;
+import java.util.Locale;
 
 public class Receipt {
     private final List<Product> products;
@@ -47,6 +48,6 @@ public class Receipt {
     }
 
     private String formatValue(double value) {
-        return String.format("%.2f", value);
+        return String.format(Locale.US, "%.2f", value);
     }
 }

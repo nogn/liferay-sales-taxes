@@ -4,7 +4,7 @@ import com.liferay.products.Product;
 
 import static com.liferay.billing.TaxType.IMPORT_TAX;
 
-public class TaxCalculator {
+public class TaxCalculator implements ITaxCalculator {
     private static final double ROUND_OFF = 0.05;
 
     public double calculateTaxValue(Product product) {
