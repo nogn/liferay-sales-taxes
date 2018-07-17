@@ -13,29 +13,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentCounterTest {
 
-    @Test
-    public void createReceiptTest() {
-        Product product1 = new BookProduct();
-        product1.setValue(5.0);
-        product1.setQuantity(1);
+	@Test
+	public void createReceiptTest() {
+		Product product1 = new BookProduct();
+		product1.setValue(5.0);
+		product1.setQuantity(1);
 
-        Product product2 = new MedicalProduct();
-        product2.setValue(2.5);
-        product2.setQuantity(2);
+		Product product2 = new MedicalProduct();
+		product2.setValue(2.5);
+		product2.setQuantity(2);
 
-        List<Product> products = Arrays.asList(product1, product2);
-        
-        double expectedTotalCost = 10.0;
-        double expectedTotalTax = 0.0;
+		List<Product> products = Arrays.asList(product1, product2);
 
-        PaymentCounter paymentCounter = new PaymentCounter();
-        
-        Receipt receipt = paymentCounter.createReceipt(products);
+		double expectedTotalCost = 10.0;
+		double expectedTotalTax = 0.0;
 
-        assertNotNull(receipt);
-        assertEquals(expectedTotalCost, receipt.getTotal());
-        assertEquals(expectedTotalTax, receipt.getTotalSalesTax());
-        assertEquals(0, product1.getTaxValue());
-        assertEquals(0, product2.getTaxValue());
-    }
+		PaymentCounter paymentCounter = new PaymentCounter();
+
+		Receipt receipt = paymentCounter.createReceipt(products);
+
+		assertNotNull(receipt);
+		assertEquals(expectedTotalCost, receipt.getTotal());
+		assertEquals(expectedTotalTax, receipt.getTotalSalesTax());
+		assertEquals(0, product1.getTaxValue());
+		assertEquals(0, product2.getTaxValue());
+	}
 }

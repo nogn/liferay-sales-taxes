@@ -5,24 +5,24 @@ import com.liferay.products.Product;
 import java.util.List;
 
 public class PaymentCounter implements IPaymentCounter {
-    private ITaxCalculator taxCalculator;
+	private ITaxCalculator taxCalculator;
 
-    public PaymentCounter() {
-        this.taxCalculator = new TaxCalculator();
-    }
+	public PaymentCounter() {
+		this.taxCalculator = new TaxCalculator();
+	}
 
-    public Receipt createReceipt(List<Product> products) {
-        double totalCost = 0;
-        double totalSalesTax = 0;
+	public Receipt createReceipt(List<Product> products) {
+		double totalCost = 0;
+		double totalSalesTax = 0;
 
-        for (Product product : products) {
-            double taxValue = taxCalculator.calculateTaxValue(product);
-            product.setTaxValue(taxValue);
+		for (Product product : products) {
+			double taxValue = taxCalculator.calculateTaxValue(product);
+			product.setTaxValue(taxValue);
 
-            totalCost += product.getTaxedPrice();
-            totalSalesTax += product.getTaxValue();
-        }
+			totalCost += product.getTaxedPrice();
+			totalSalesTax += product.getTaxValue();
+		}
 
-        return new Receipt(products, totalCost, totalSalesTax);
-    }
+		return new Receipt(products, totalCost, totalSalesTax);
+	}
 }

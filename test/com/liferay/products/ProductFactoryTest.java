@@ -17,7 +17,7 @@ public class ProductFactoryTest {
 		Product expectedProduct = new BookProduct(name, value, quantity, imported);
 
 		Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
-		
+
 		assertNotNull(product);
 		assertEquals(expectedProduct, product);
 	}
@@ -31,13 +31,13 @@ public class ProductFactoryTest {
 		boolean imported = false;
 
 		Product expectedProduct = new FoodProduct(name, value, quantity, imported);
-				
+
 		Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
-		
+
 		assertNotNull(product);
 		assertEquals(expectedProduct, product);
 	}
-	
+
 	@Test
 	public void createMedicalProductTest() {
 		ProductType type = ProductType.MEDICAL;
@@ -49,11 +49,11 @@ public class ProductFactoryTest {
 		Product expectedProduct = new MedicalProduct(name, value, quantity, imported);
 
 		Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
-		
+
 		assertNotNull(product);
 		assertEquals(expectedProduct, product);
 	}
-	
+
 	@Test
 	public void createMiscellaneousProductTest() {
 		ProductType type = ProductType.MISCELLANEOUS;
@@ -65,11 +65,11 @@ public class ProductFactoryTest {
 		Product expectedProduct = new MiscellaneousProduct(name, value, quantity, imported);
 
 		Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
-		
+
 		assertNotNull(product);
 		assertEquals(expectedProduct, product);
 	}
-	
+
 	@Test
 	public void notCreateInvalidProductTest() {
 		ProductType type = null;
@@ -77,9 +77,9 @@ public class ProductFactoryTest {
 		double value = 20.0;
 		int quantity = 1;
 		boolean imported = false;
-				
+
 		Product product = ProductFactory.createProduct(type, name, value, quantity, imported);
-		
+
 		assertNull(product);
 	}
 }
