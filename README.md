@@ -93,7 +93,7 @@ Input Files
 -------------------
 The input files are in the "input-files" folder in the root directory.
 
-Run Instructions
+Running Instructions
 -------------------
 The Main class runs the application for each input text file.
 
