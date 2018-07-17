@@ -5,11 +5,11 @@ import com.liferay.products.Product;
 import java.util.List;
 
 public abstract class OrderReader {
-    protected IStoreShelf storeShelf;
+	protected IStoreShelf storeShelf;
 
-    public OrderReader() {
-        this.storeShelf = new StoreShelf();
-    }
+	public OrderReader() {
+		this.storeShelf = new StoreShelf();
+	}
 
-    abstract List<Product> getOrderList(String path);
+	abstract List<Product> getOrderList(String path);
 }
